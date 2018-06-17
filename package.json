@@ -1,15 +1,16 @@
 {
-  "name": "AFUMA",
+  "name": "af-uma",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Shanesapps",
+  "homepage": "http://www.lesterweb.co.uk/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "deploy": "shx rm -rf www/*. && npm run build --prod && firebase deploy"
   },
   "dependencies": {
     "@angular/animations": "5.2.11",
@@ -32,7 +33,8 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.10",
+    "shx": "^0.3.0",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project"
+  "description": "Universal Medical App"
 }
