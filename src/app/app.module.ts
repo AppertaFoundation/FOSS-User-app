@@ -14,6 +14,8 @@ import { firebaseConfig } from '../assets/dbdetails'
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { FavouriteServiceProvider } from '../providers/favourite-service/favourite-service';
 
+import { IonicImageViewerModule } from 'ionic-img-viewer';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -27,6 +29,7 @@ import { FavouriteServiceProvider } from '../providers/favourite-service/favouri
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     IonicStorageModule.forRoot(),
+    IonicImageViewerModule
 
   ],
   bootstrap: [IonicApp],

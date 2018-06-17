@@ -14,3 +14,26 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.home-background{
+    background-image: url(../assets/image/picture.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .highlight{
+    background-color: yellow;
+  }
+  
+  p{
+    font-size: 1.8rem !important;
+  }
+  
+  h2, h3, h4{
+    color:#417D9A !important;
+  }
+  
+  .group{
+    color:#417D9A !important;
+  }

@@ -16,6 +16,7 @@ export class FavouriteServiceProvider {
   favouriteList:Array<ClinItem> =[];
   hospDB:any;
   store:string;
+  specialty:string;
 
   constructor(private fbServ: FirebaseProvider, private storage:Storage) {
     this.makeStore();
@@ -23,16 +24,23 @@ export class FavouriteServiceProvider {
   }
 
   removeFavourite(item:ClinItem):boolean{
-    let index = this.favouriteList.indexOf(item);
-    if(index >-1){
-      this.favouriteList.splice(index, 1);
-      // console.log("removed",item);
-      return true;
+    if(!this.favouriteList || this.favouriteList.length <1){return}
+    for(let f=0; f<this.favouriteList.length; f++){
+      if(item.title == this.favouriteList[f].title){
+        console.log(item.title);
+        this.favouriteList.splice(f, 1);
+
+      }
     }
-    else{
-      console.log("Failed to remove");
-      return false;
-    }
+    this.save();
+    console.log(this.favouriteList);
+  }
+
+  getSpecialty(){
+    this.specialty = this.fbServ.getNewSpecialty();
+    this.store = this.hospDB.hospital + this.specialty+"Fav";
+
+
   }
 
   getFavList():Array<ClinItem>{//list of objects
@@ -42,7 +50,8 @@ export class FavouriteServiceProvider {
 
   makeStore(){
     this.hospDB  = this.fbServ.getDBDetails();
-    this.store = this.hospDB.hospital + this.hospDB.specialty+"Fav";
+    this.specialty = this.fbServ.getNewSpecialty() || this.hospDB.specialty;
+    this.store = this.hospDB.hospital + this.specialty+"Fav";
     this.storage.get(this.store)
     .then(savedData=>{
       if(Array.isArray(savedData) && savedData.length >0){
@@ -58,7 +67,7 @@ export class FavouriteServiceProvider {
   }
 
   getData(){
-    this.storage.get(this.store)
+    return this.storage.get(this.store)
     .then(data=>{
       console.log("Favlist is:",this.favouriteList);
       this.favouriteList = data;
@@ -74,11 +83,19 @@ export class FavouriteServiceProvider {
 
   addFavourite(item:ClinItem){//pushing a full object
     console.log("adding favourite", item);
-    if(this.favouriteList.indexOf(item) == -1)
-      {
-      this.favouriteList.push(item);
-    this.save();
+    if(!this.favouriteList){
+      this.getData();
+      return
     }
+    for(let f=0; f<this.favouriteList.length; f++){
+      if(item.title == this.favouriteList[f].title){
+        console.log(item.title);
+        return;
+      }
+    }
+    this.favouriteList.push(item);
+    this.save();
+    
   }
 
   

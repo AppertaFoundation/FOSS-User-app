@@ -32,25 +32,21 @@ export class ClinicalDetailPage {
 
     this.fbServ.manageDetail("clinical", this.detailObject);
 
-    this.favList = this.favServ.getFavList();
-    console.log("checking Favourites in ClinDet:", this.favList);
-    console.log("Index is:",this.favList.indexOf(this.detailObject));
-    if(this.favList.indexOf(this.detailObject) > -1){
-      this.isFav = true;
-    }
-
-
-    // ************
-    this.favList.forEach(fav=>{
-      if(fav.title == this.detailObject.title){
-        this.isFav = true;
+    this.favServ.getData()
+    .then(data =>{
+      if(data){
+        this.favList = data;
+        this.favList.forEach(fav=>{
+          if(fav.title == this.detailObject.title){
+            this.isFav = true;
+          }
+        })
+      }
+      else{
+        this.favList = [];
       }
     })
-// *****************
-
-    // console.log("DetailsObject:", this.detailObject);
-    // console.log("Fav Status:", this.isFav);
-  }
+   }
 
   isPresent(type:string){
     let present;

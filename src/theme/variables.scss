@@ -43,6 +43,7 @@ $colors: (
   back:    #9ec6DE,
   edge: #EEE8D6
 );
+@import "./basic";
 
 
 // App iOS Variables
@@ -75,23 +76,7 @@ $colors: (
 
 @import "ionic.theme.default";
 
-.basic{
 
-  p{
-    font-size: 1.8rem !important;
-  }
-  
-  h2, h3, h4{
-    color:#417D9A !important;
-  }
-  
-  .group{
-    color:#417D9A !important;
-  }
-  
-  
-  }
-  
 
 
 // Ionicons

@@ -28,16 +28,25 @@ export class FavouritesPage {
   }
 
   ionViewWillEnter() {
+    this.favServ.getSpecialty();
     this.checkFavourites();
   }
 
   checkFavourites(){
-    this.favouritesList =this.favServ.getFavList();//get list of favourites
+    this.favServ.getData()
+    .then(
+      data =>{
+        if(data && data.length >0){
+          this.empty = false;
+          this.favouritesList = data;
+          console.log("Some favourites");
+        }
+        else {this.favouritesList =[]}
+      }
+    )
+
     console.log("check:",this.favouritesList);
-    if(this.favouritesList.length >0){
-      this.empty = false;
-      console.log("Some favourites");
-    }
+    
   }
 
   showDetail(info:any) {
