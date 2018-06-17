@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
+
+@IonicPage({
+  name:'list'
+})
 
 @Component({
   selector: 'page-list',
