@@ -1,0 +1,67 @@
+<!--
+  Generated template for the ClinicalDetail page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{detailObject.title}}</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding *ngIf="detailObject && !detailObject.image">
+  <button ion-button color = "primary" *ngIf = "!this.isFav" (click) = "this.makeFav(this.detailObject)">Favourite</button>
+  <button ion-button color = "secondary" *ngIf = "this.isFav" (click) = "this.unFav(this.detailObject)">Unfavourite</button>
+  <h3 *ngIf="isPresent('picture')">Picture</h3>
+  <img [src]="detailObject.picture" >
+
+  <h4 *ngIf="isPresent('summary')">Summary
+    </h4>
+  <div *ngFor="let data of detailObject.summary">
+    <p>
+      {{data}}
+    </p>
+  </div>
+
+  <h4 *ngIf="isPresent('symptoms')">Symptoms
+    </h4>
+
+  <div *ngFor="let data of detailObject.symptoms">
+    <p>
+      {{data}}
+    </p>
+  </div>
+
+  <h4 *ngIf="isPresent('signs')">Signs
+    </h4>
+  <p *ngFor="let data of detailObject.signs">{{data}}</p>
+
+  <h4 *ngIf="isPresent('required')">Action
+    </h4>
+  <p *ngFor="let data of detailObject.required">{{data}}</p>
+
+  <h4 *ngIf="isPresent('admit')">Admit
+    </h4>
+  <p *ngFor="let data of detailObject.admit">{{data}}</p>
+
+  <h4 *ngIf="isPresent('flags')">Red Flags
+  </h4>
+  <p *ngFor="let data of detailObject.flags">{{data}}</p>
+
+</ion-content>
+<ion-content padding *ngIf="detailObject && detailObject.image">
+  <button ion-button color = "primary" *ngIf = "!this.isFav" (click) = "this.makeFav(this.detailObject)">Favourite</button>
+  <button ion-button color = "secondary" *ngIf = "this.isFav" (click) = "this.unFav(this.detailObject)">Unfavourite</button>
+
+
+  <div *ngFor="let picture of this.detailObject.image">
+    <img [src]="picture" >
+  </div>
+</ion-content>
+
+<ion-content *ngIf="!detailObject">
+  <h3>No items to show</h3>
+</ion-content>

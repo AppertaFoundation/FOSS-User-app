@@ -1,0 +1,38 @@
+<!--
+  Generated template for the DepartmentDetail page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Department Details - {{pageTitle.group}}</ion-title>
+  
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding *ngIf = "!detailObject.image" >
+    <ion-list >
+      <ion-item *ngFor="let data of detailObject" text-wrap>
+          <h2 *ngIf="data.type == 'title'">
+          <u >{{data.detail}}</u>
+        </h2>
+        <h3 *ngIf="data.type == 'subtitle'" >{{data.detail}}</h3>
+        <h3 *ngIf="data.type == 'heading'">
+          <strong >{{data.detail}}</strong>
+        </h3>
+        <h3 *ngIf="data.type == 'important'">
+          <strong><u >{{data.detail}}</u></strong>
+        </h3>
+        <p *ngIf="data.type == 'text'" >{{data.detail}}</p>
+        <p *ngIf="data.type == 'list'" >{{data.detail}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-content *ngIf="this.detailObject.image">
+    <div *ngFor ="let picture of this.detailObject.image">
+        <img [src]="picture">
+    </div>
+  </ion-content>
+  

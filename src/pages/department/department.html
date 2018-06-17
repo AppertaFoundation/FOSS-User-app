@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Department</ion-title>
+  
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+  
+  
+    </ion-navbar>
+    <ion-toolbar>
+      <ion-searchbar primary placeholder="Search for..." hideCancelButton [(ngModel)]="searchValue" [formControl]="searchControl" value=""></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <h3>Department Information</h3>
+    <p>
+      Click the name of the item to view more details
+    </p>
+    <ion-list>
+      <div *ngIf="!departmentListData">
+        <h1>Loading, please wait..</h1>
+        <ion-spinner></ion-spinner>
+      </div>
+      <div *ngFor="let info of departmentListData; trackBy ">
+        <button ion-item (click)="showDetail(info)" class="group">{{info.group}}</button>
+      </div>
+    </ion-list>
+  </ion-content>
+  
