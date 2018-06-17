@@ -78,28 +78,23 @@ export class FirebaseProvider {
     // console.log("Stored specialty", this.specialty);
   }
 
-  getList(type:string){
+  getList(type:string):Promise<any>{
     this.hospSpecType = this.hospital + this.specialty + type;
     this.dataType = this.specialty + type + "Data";//now including specialty in the dataType
-    return this.storage.get(this.dataType+"Fetched")
-    .then(data=>{
-      if(data){
-        this.storage.get(this.hospSpecType)
-        .then(listData => {return listData})
-      }
-      else{
-        return null;
-      }
-    })
-  }
+    return this.storage.get(this.hospSpecType)
+     }
 
   getWebListData(type:string){
     this.listObs = this.afDatabase.list(`${this.hospital}/${this.specialty}/published/${type}`)
     .valueChanges();
     this.listObs.subscribe(
       data=>{
-        this.storage.set(this.hospSpecType, this[this.dataType])
-        .then(()=>this[this.dataType + "Fetched"] = true)
+        this.storage.set(this.hospSpecType, data)
+        .then(()=>{
+          this[this.dataType + "Fetched"] = true;
+          // console.log("Datatype",this.dataType);
+          this.storage.set(this.dataType +"Fetched", true);
+        })
       }
     )
     return this.listObs;

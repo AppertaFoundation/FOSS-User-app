@@ -27,7 +27,7 @@ export class FavouritesPage {
     this.checkFavourites();
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     this.checkFavourites();
   }
 

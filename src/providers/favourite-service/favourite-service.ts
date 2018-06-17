@@ -47,9 +47,11 @@ export class FavouriteServiceProvider {
     .then(savedData=>{
       if(Array.isArray(savedData) && savedData.length >0){
         //there is data
+        console.log("makestore has data",this.store, this.favouriteList);
         this.favouriteList = savedData;
       }
       else{
+        console.log("makestore has no data", this.favouriteList);
         this.storage.set(this.store,[]);
       }
     })
@@ -58,6 +60,7 @@ export class FavouriteServiceProvider {
   getData(){
     this.storage.get(this.store)
     .then(data=>{
+      console.log("Favlist is:",this.favouriteList);
       this.favouriteList = data;
       return data
       //null if no data      
