@@ -23,7 +23,7 @@ It is licensed under an AGPL 3.0 license
 ## How do I get set up?
 
 ### Clone the repo
-Clone this repo using this command in a new directory (where you wish to store the project)- run the following
+Clone this repo using this command in a new directory (where you wish to store the project)- run the following:
 `git clone https://github.com/AppertaFoundation/FOSS-User-app.git`
 
 
