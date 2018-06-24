@@ -9,7 +9,7 @@ import { HomePage } from '../pages/home/home';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { firebaseConfig } from '../assets/dbdetails'
+import { config } from '../assets/dbdetails'
 
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { FavouriteServiceProvider } from '../providers/favourite-service/favourite-service';
@@ -26,7 +26,7 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
     IonicModule.forRoot(MyApp,{
       preloadModules:true
     }),
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
     IonicStorageModule.forRoot(),
     IonicImageViewerModule
