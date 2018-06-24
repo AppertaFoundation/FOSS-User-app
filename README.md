@@ -94,6 +94,7 @@ Where it says (in your own snippet)
    # Optional
    - Change the picture - replace picture.jpg with your own picture (make sure you have permission to use it), giving it the _same name_
    - Replace the files in the `icon` and `img` folders with your own images **keep the same names**
+   - got to the `manifest.json` and change the `name` and `shortname` **(only change the bit after the colon in the quotes)** to the name you want to appear on your HomeScreen when you install it
 
    ## Try it out
    In you command line/ terminal
