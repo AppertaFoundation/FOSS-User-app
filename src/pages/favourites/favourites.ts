@@ -28,25 +28,17 @@ export class FavouritesPage {
   }
 
   ionViewWillEnter() {
-    this.favServ.getSpecialty();
     this.checkFavourites();
   }
 
-  checkFavourites(){
-    this.favServ.getData()
-    .then(
-      data =>{
-        if(data && data.length >0){
-          this.empty = false;
-          this.favouritesList = data;
-          console.log("Some favourites");
-        }
-        else {this.favouritesList =[]}
-      }
-    )
-
-    console.log("check:",this.favouritesList);
-    
+  checkFavourites():boolean{
+    this.favouritesList = this.favServ.getFavList();
+    if(this.favouritesList && this.favouritesList.length >0){
+      console.log("Some favourites",this.favouritesList);
+      this.empty = false;
+      return true;
+    }
+    return false;
   }
 
   showDetail(info:any) {

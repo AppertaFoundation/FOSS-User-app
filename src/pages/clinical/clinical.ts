@@ -5,6 +5,7 @@ import {FormControl} from '@angular/forms';
 import { ClinItem } from '../../models/models';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { FavouriteServiceProvider } from '../../providers/favourite-service/favourite-service';
 
 
 /**
@@ -28,21 +29,21 @@ export class ClinicalPage {
   private ClinSearchValue: string;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public fbServ: FirebaseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public fbServ: FirebaseProvider, private favServ:FavouriteServiceProvider) {
     this.ClinSearchControl = new FormControl();
   }
 
-  ionViewDidLoad() {
+  ionViewWillLoad() {
     console.log('ionViewDidLoad ClinicalPage');
     this.fbServ.getList("clinical")
       .then((data) => {
-        console.log("Got data", data);
+        console.log("Date returned as:", data);
         this.clinicalListData = data;
         if(!data){
           this.fbServ.getWebListData('clinical')
           .subscribe(
             data=>{
-              console.log("Got data", data);
+              console.log("Got data in subscribe", data);
               this.clinicalListData = data;
   
             }
@@ -55,10 +56,11 @@ export class ClinicalPage {
           this.clinicalListData = this.FullClinicalListData;
         }
         else {
-          this.filterItems(search);
+          if(search)
+          {this.filterItems(search);}
         }
       })
-
+      
     }
 
   filterItems(searchItem) {

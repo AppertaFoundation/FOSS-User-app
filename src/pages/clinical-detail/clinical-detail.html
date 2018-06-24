@@ -15,8 +15,9 @@
 <ion-content padding *ngIf="detailObject && !detailObject.image">
   <button ion-button color = "primary" *ngIf = "!this.isFav" (click) = "this.makeFav(this.detailObject)">Favourite</button>
   <button ion-button color = "secondary" *ngIf = "this.isFav" (click) = "this.unFav(this.detailObject)">Unfavourite</button>
-  <h3 *ngIf="isPresent('picture')">Picture</h3>
+  <div *ngIf="isPresent('picture')"><h3>Picture</h3>
   <img [src]="detailObject.picture"/>
+  </div>
 
   <h4 *ngIf="isPresent('summary')">Summary
     </h4>

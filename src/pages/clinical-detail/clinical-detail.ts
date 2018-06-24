@@ -26,27 +26,22 @@ export class ClinicalDetailPage {
   ionViewWillLoad(){
     this.detailObject = this.navParams.get('info');
     console.log ("Data content for page ",this.detailObject);
-    let truth = this.detailObject.symptoms;
-    console.log("Truth", truth);
+    // let truth = this.detailObject.symptoms;
+    // console.log("Truth", truth);
     this.auth = true;
 
     this.fbServ.manageDetail("clinical", this.detailObject);
 
-    this.favServ.getData()
-    .then(data =>{
-      if(data){
-        this.favList = data;
-        this.favList.forEach(fav=>{
-          if(fav.title == this.detailObject.title){
-            this.isFav = true;
-          }
-        })
-      }
-      else{
-        this.favList = [];
-      }
-    })
-   }
+    this.favList =this.favServ.getFavList();
+    if(this.favList){
+      this.favList.forEach(fav=>{
+        if(fav.title == this.detailObject.title){
+              this.isFav = true;
+            }
+          })
+        }
+    else{this.favServ.makeStore()}
+     }
 
   isPresent(type:string){
     let present;
