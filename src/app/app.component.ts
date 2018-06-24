@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ToastController } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
 
@@ -14,7 +14,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform) {
+  constructor(public platform: Platform, private toastCtrl: ToastController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -29,7 +29,22 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      
+      const isIos = () => {
+        const userAgent = window.navigator.userAgent.toLowerCase();
+        return /iphone|ipad|ipod/.test(userAgent);
+      }
+
+      const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator['standalone']);
+
+      if (isIos() && !isInStandaloneMode()) {
+        let toast = this.toastCtrl.create({
+          message: 'Install this webapp on your iPhone: Tap the share icon below and then select "Add to Home Screen"',
+          position: 'bottom',
+          duration: 10000,
+          showCloseButton: true
+        });
+        toast.present();
+      }
     });
   }
 
