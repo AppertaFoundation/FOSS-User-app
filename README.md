@@ -57,37 +57,10 @@ Use the default settings for sharing Google Analytics for Firebase data
 - When ready click Continue
 
 ## Get your database "Snippet"
-# Go back to your Database app
-- Select the web app from the drop down menu at the top:
-- On the left menu go to `Authentication`.
-- In the top right there is a button stating
-   `Web Setup` - click it
-- A box will open up stating `Add firebase to your web app`
-
-Where it says (in your own snippet)
-~~~
-  var config = {
-      apiKey: "<API_KEY>",
-      authDomain: "<PROJECT_ID>.firebaseapp.com",
-      databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
-      storageBucket: "<BUCKET>.appspot.com",
-      messagingSenderId: "<SENDER_ID>",
-    };
-~~~
-  copy everything starting with  the `var` until after the next `};`
-   
-   (this is a javascript object with your project settings)
-
-  **You DON'T copy these lines**
-  ~~~
-  <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
-  <script>
-  // Initialize Firebase
-  ~~~
-  `firebase.initializeApp(config); </script>` 
-
-   ...and paste the object into the dbdetails.ts file after the word `export ` in the app project (remember to leave a space between)
-   **This is the file that you deleted a section from a minute ago**
+# Go back to your Web APP
+- Copy all of dbdetails.ts
+- In this app (the user app) delete the contents of dbdetails.ts (in assets folder)
+- Paste the dbdetails.ts contents from your Web App (they should be the same config and dbDetails objects)
 
    **Save the file**   
 
