@@ -16,7 +16,7 @@
   <button ion-button color = "primary" *ngIf = "!this.isFav" (click) = "this.makeFav(this.detailObject)">Favourite</button>
   <button ion-button color = "secondary" *ngIf = "this.isFav" (click) = "this.unFav(this.detailObject)">Unfavourite</button>
   <div *ngIf="isPresent('picture')"><h3>Picture</h3>
-  <img [src]="detailObject.picture"/>
+  <img src={{detailObject.picture}} imageViewer/>
   </div>
 
   <h4 *ngIf="isPresent('summary')">Summary
@@ -59,7 +59,7 @@
 
 
   <div *ngFor="let picture of this.detailObject.image">
-    <img [src]="picture" imageViewer/>
+    <img src={{picture}} imageViewer/>
   </div>
 </ion-content>
 

@@ -32,7 +32,7 @@
   </ion-content>
   <ion-content *ngIf="this.detailObject.image">
     <div *ngFor ="let picture of this.detailObject.image">
-        <img [src]="picture"/>
+        <img src={{picture}} imageViewer/>
     </div>
   </ion-content>
   
