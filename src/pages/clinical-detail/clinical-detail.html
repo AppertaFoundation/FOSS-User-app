@@ -22,35 +22,30 @@
   <h4 *ngIf="isPresent('summary')">Summary
     </h4>
   <div *ngFor="let data of detailObject.summary">
-    <p>
-      {{data}}
-    </p>
+    <p class="para">{{data}}</p>
   </div>
 
   <h4 *ngIf="isPresent('symptoms')">Symptoms
     </h4>
-
   <div *ngFor="let data of detailObject.symptoms">
-    <p>
-      {{data}}
-    </p>
+    <p class="para">{{data}}</p>
   </div>
 
   <h4 *ngIf="isPresent('signs')">Signs
     </h4>
-  <p *ngFor="let data of detailObject.signs">{{data}}</p>
+  <p *ngFor="let data of detailObject.signs" class="para">{{data}}</p>
 
   <h4 *ngIf="isPresent('required')">Action
     </h4>
-  <p *ngFor="let data of detailObject.required">{{data}}</p>
+  <p *ngFor="let data of detailObject.required" class="para">{{data}}</p>
 
   <h4 *ngIf="isPresent('admit')">Admit
     </h4>
-  <p *ngFor="let data of detailObject.admit">{{data}}</p>
+  <p *ngFor="let data of detailObject.admit" class="para">{{data}}</p>
 
   <h4 *ngIf="isPresent('flags')">Red Flags
   </h4>
-  <p *ngFor="let data of detailObject.flags">{{data}}</p>
+  <p *ngFor="let data of detailObject.flags" class="para">{{data}}</p>
 
 </ion-content>
 <ion-content padding *ngIf="detailObject && detailObject.image">
