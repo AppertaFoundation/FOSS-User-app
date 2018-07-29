@@ -113,9 +113,16 @@ export class FirebaseProvider {
   }
 
 
-  reloadData(type: string) {
-    this[this.specialty + type + "DataFetched"] = false;
-    this.getList(type);
+  reloadData(type: string) { 
+    // Use this snippet elsewhere for manual reload of clincal and departmental data
+    //<!--
+    //this.fbServ.reloadData("clinical");
+    //this.fbServ.reloadData("department");
+    //this.navCtrl.setRoot(HomePage); 
+    //-->
+    
+    this.storage.set(this.specialty + type + "DataFetched",false); //correctly changes flags
+    //this.getList(type); //then re-nav to clinical page to self-invoke reloading of data from network rather than via this 
   }
 
 
